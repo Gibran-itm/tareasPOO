@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 
 public class Inventario {
-
-    public ArrayList<Producto> listaPoductos = new ArrayList<Producto>();
+    public ArrayList<Producto> listaProductos = new ArrayList<Producto>();
     public ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
 
-    public void registrarProductos(Producto producto) {
-        this.listaPoductos.add(producto);
-        System.out.println("Se registro un nuevo Producto");
+    public void registrarProducto(Producto producto) {
+
+        for (Categoria categoria : this.listaCategorias) {
+            if (categoria.id == producto.idCategoria) {
+                categoria.listaProductos.add(producto);
+                break;
+            }
+        }
+
+        this.listaProductos.add(producto);
     }
 
     public void registrarCategoria(Categoria categoria) {
@@ -15,33 +21,61 @@ public class Inventario {
     }
 
     public void eliminarProducto(int idProductoEliminar) {
-        int longitudOrignal = this.listaPoductos.size();
+        int longitudOriginal = this.listaProductos.size(); // 3
 
-        this.listaPoductos.removeIf((producto -> producto.getId() == idProductoEliminar));
+        this.listaProductos.removeIf((producto) -> producto.getId() == idProductoEliminar);
 
-        if (longitudOrignal != this.listaPoductos.size()){
-            System.out.println("\nSe elimino el producto con el ID: " + idProductoEliminar);
+        if (longitudOriginal != this.listaProductos.size()) {
+            System.out.println("Se eliminó el prodcuto con el ID: " + idProductoEliminar);
         } else {
-            System.out.println("\nNo existe el producto con el ID: " + idProductoEliminar);
+            System.out.println("No existe un producto con el ID: " + idProductoEliminar);
         }
     }
 
     public void mostrarProductos() {
-        System.out.println("\n** PRODUCTOS EN EL SISTEMA **");
+        System.out.println("\n*** PRODUCTOS EN EL SISTEMA ***");
 
-        if (this.listaPoductos.size() == 0){
-            System.out.println("\nNo esxiste productos registrados");
-        } else {
+        if (this.listaProductos.size() == 0) {
+            System.out.println("\nNo existen productos en el sistema");
+            return;
+        }
 
-            for (Producto producto : this.listaPoductos) {
-                System.out.println(producto.mostrarProductos());
-            }
+        int iterador = 1;
+        for (Producto producto : this.listaProductos) {
+            System.out.println("\nEste es el producto: " + iterador);
+            System.out.println(producto.mostrarProducto());
+            iterador++;
+        }
+    }
 
+    // Metodo tarea 1
+    public void mostrarCategorias() {
+        System.out.println("\n*** CATEGORÍAS EN EL SISTEMA ***");
+
+        if (this.listaCategorias.isEmpty()) {
+            System.out.println("\nNo existen categorías en el sistema");
+            return;
+        }
+        for (Categoria categoria : this.listaCategorias) {
+            System.out.println(categoria.nombre + " id: " + categoria.id);
+        }
+    }
+
+    // Metodo tarea 2
+    public void mostrarCategoriasConProductos() {
+        System.out.println("\n*** CATEGORÍAS EN EL SISTEMA ***");
+
+        if (this.listaCategorias.isEmpty()) {
+            System.out.println("\nNo existen categorías en el sistema");
+            return;
+        }
+
+        for (Categoria categoria : this.listaCategorias) {
+            categoria.mostrarCategoriaConProductos();
         }
     }
 
     public boolean validarExistenciaDeCategorias() {
         return this.listaCategorias.size() > 0;
     }
-
 }
