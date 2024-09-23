@@ -13,6 +13,7 @@ public class Hospital {
     public ArrayList<Medico> listaMedicos = new ArrayList<>();
     public ArrayList<Consulta> listaConsultas = new ArrayList<>();
     public ArrayList<Consultorio> listaConsultorios = new ArrayList<>();
+    public ValidarHospital validador = new ValidarHospital();
 
     // Metodos registrar
     public void registrarPaciente(Paciente paciente) {
@@ -25,21 +26,15 @@ public class Hospital {
         this.listaPacientes.add(paciente);
     }
     public void registrarConsulta(Paciente paciente) {
-        Consulta consulta = new Consulta(1, "2024-08-10", Pac1, Med1, Cons1);
+        //Consulta consulta = new Consulta();
         this.listaPacientes.add(paciente);
     }
 
-    // Metodos validar consulta
-    public boolean validarDisponibilidadFechaConsulta(int idPaciente, String fechaDeseada, int numeroConsultorio) {
-        for (Consulta consulta : this.listaConsultas) {
-            // No exista una consulta en la fecha y consultorio deseado
-            if (!consulta.getFechaHora().equals(fechaDeseada) && numeroConsultorio == consulta.getConsultorio().numeroConsultorio) {
-                System.out.println("Ya existe una consulta registrada");
-                return false;
-            }
-        }
-        return true;
-    }
+    //if ( validador.validarDisponibilidadMedico( Consulta.getFechaHora(), Consulta.getMedito().getId(), this.listaConsultas() ) ) {
+
+    //}
+
+
 
 
 

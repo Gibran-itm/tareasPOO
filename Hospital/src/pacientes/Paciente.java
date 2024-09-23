@@ -20,5 +20,16 @@ public class Paciente {
         this.telefono = telefono;
         this.tipoSangre = tipoSangre;
     }
-}
+
+    // Mostrar
+    public String mostrarPaciente() {
+        String datos = String.format(
+                "Id: %d, Nombre: %d, Fecha Nacimiento: %d, Tipo Sangre: %d, Sexo: %d, Telefono: %d",
+                id, nombre, fechaNacimiento, tipoSangre, sexo, telefono
+        );
+        return datos;
+    }
+
+
+} // Fin Paciente
 

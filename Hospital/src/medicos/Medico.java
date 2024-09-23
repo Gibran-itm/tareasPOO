@@ -18,6 +18,32 @@ public class Medico {
         this.rfc = rfc;
         this.telefono = telefono;
     }
+
+    // Getters
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRfc() {
+        return rfc;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
 }
 
 
