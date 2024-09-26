@@ -5,41 +5,37 @@ import medicos.Medico;
 import pacientes.Paciente;
 
 public class Consulta {
-
     public int id;
     public String fechaHora;
     public Paciente paciente;
     public Medico medico;
     public Consultorio consultorio;
 
-    // Constructor
-    public Consulta(Consultorio consultorio, String fechaHora, int id, Medico medico, Paciente paciente) {
-        this.consultorio = consultorio;
-        this.fechaHora = fechaHora;
+    public Consulta(int id, String fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
         this.id = id;
-        this.medico = medico;
+        this.fechaHora = fechaHora;
         this.paciente = paciente;
-    }
-
-    // Getters
-
-    public Consultorio getConsultorio() {
-        return consultorio;
-    }
-
-    public String getFechaHora() {
-        return fechaHora;
+        this.medico = medico;
+        this.consultorio = consultorio;
     }
 
     public int getId() {
         return id;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public String getFechaHora() {
+        return fechaHora;
     }
 
     public Paciente getPaciente() {
         return paciente;
     }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Consultorio getConsultorio() {
+        return consultorio;}
+
 }
