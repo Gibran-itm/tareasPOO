@@ -1,17 +1,34 @@
 package consultorios;
 
+import com.sun.javafx.binding.StringFormatter;
+
 public class Consultorio {
-    // Atributos
-    public int id;
+    public String id;
     public int piso;
     public int numeroConsultorio;
 
-    // Constructor
-    public Consultorio(int id, int numeroConsultorio, int piso) {
+
+    public Consultorio(String id, int piso, int numeroConsultorio) {
         this.id = id;
-        this.numeroConsultorio = numeroConsultorio;
         this.piso = piso;
+        this.numeroConsultorio = numeroConsultorio;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getPiso() {
+        return piso;
+    }
+
+    public int getNumeroConsultorio() {
+        return numeroConsultorio;
+}
+public String mostrarConsultorio() {
+        String datos=String.format("Id: %s Piso: %d Num. Consultorio: %d", id, piso, numeroConsultorio);
+        return datos;
+}
 
 
 }
