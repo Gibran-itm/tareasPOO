@@ -1,50 +1,27 @@
-package medicos;
+package hospital;
+import hospital.Hospital;
+import consultas.Consulta;
+import java.util.ArrayList;
 
-public class Medico {
-    // Atributos
-    public int id;
-    public String nombre;
-    public String apellidos;
-    public String fechaNacimiento;
-    private String telefono;
-    private String rfc;
+public class ValidadorHospital {
+    public boolean validarDisponibilidadEnFechaConsulta(String fecheDeseada, int numeroConsultorio, ArrayList<Consulta> listaConsultas) {
+        for (Consulta consulta : listaConsultas) {
+            if (consulta.getFechaHora().equals(fecheDeseada) && numeroConsultorio == consulta.getConsultorio().getNumeroConsultorio()) {
+                return false;
+            }
+        }
 
-    // Constructor
-    public Medico(String apellidos, String fechaNacimiento, int id, String nombre, String rfc, String telefono) {
-        this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
-        this.id = id;
-        this.nombre = nombre;
-        this.rfc = rfc;
-        this.telefono = telefono;
+        return true;
     }
 
-    // Getters
+    public boolean validarDisponibilidadMedico(String fechaDeseada, String idMedico, ArrayList<Consulta> listaConsultas) {
+        for (Consulta consulta : listaConsultas) {
+            if (consulta.getFechaHora().equals(fechaDeseada) && consulta.getMedico().getId() == idMedico) {
+                return false;
+            }
+        }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getRfc() {
-        return rfc;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
+        return true;
 }
 
-
-
+}
