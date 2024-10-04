@@ -1,20 +1,19 @@
 package consultas;
 
 import consultorios.Consultorio;
-import medicos.Medico;
-import pacientes.Paciente;
+import usuarios.medicos.Medico;
+import usuarios.pacientes.Paciente;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Consulta {
-    public int id;
+    public String id;
     public LocalDateTime fechaHora;
     public Paciente paciente;
     public Medico medico;
     public Consultorio consultorio;
 
-    public Consulta(int id, LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
+    public Consulta(String id, LocalDateTime fechaHora, Paciente paciente, Medico medico, Consultorio consultorio) {
         this.id = id;
         this.fechaHora = fechaHora;
         this.paciente = paciente;
@@ -22,7 +21,7 @@ public class Consulta {
         this.consultorio = consultorio;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -38,6 +37,18 @@ public class Consulta {
         return medico;
     }
 
-    public Consultorio getConsultorio() {
-        return consultorio;}
+    public Consultorio getConsultorio() { return consultorio; }
+
+    public String mostrarDatos() {
+        return String.format("Id: %s  |  Fecha: %s  |  Id Paciente: %s  |  Paciente: %s  |  Id Medico: %s  |  Médico: %s  |  Piso Consultorio: %d  |  Numero Consultorio: %d",
+                getId(),
+                getFechaHora(),
+                paciente.getId(),
+                paciente.getNombre(),
+                medico.getId(),
+                medico.getNombre(),
+                consultorio.getPiso(),
+                consultorio.getNumeroConsultorio()
+        );
+    }
 }

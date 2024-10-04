@@ -1,10 +1,10 @@
 package hospital;
-import hospital.Hospital;
+
 import consultas.Consulta;
-import medicos.Medico;
+import usuarios.medicos.Medico;
+import usuarios.pacientes.Paciente;
 
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 
 public class ValidadorHospital {
@@ -28,5 +28,43 @@ public class ValidadorHospital {
         return true;
     }
 
+    public boolean validarFechaCorrecta(LocalDateTime fechaDeseada) {
+        LocalDateTime fechaActual = LocalDateTime.now();
 
+        if (fechaDeseada.isBefore(fechaActual)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validarTelefonoPaciente(String telefono, ArrayList<Paciente> listaPacientes) {
+        for (Paciente paciente : listaPacientes) {
+            if (telefono.equals(paciente.getTelefono())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean validarTelefonoMedico(String telefono, ArrayList<Medico> listaMedicos) {
+        for (Medico medico : listaMedicos) {
+            if (telefono.equals(medico.getTelefono())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean validarRFCMedico(String rfc, ArrayList<Medico> listaMedicos) {
+        for (Medico medico : listaMedicos) {
+            if (rfc.equals(medico.getRfc())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
